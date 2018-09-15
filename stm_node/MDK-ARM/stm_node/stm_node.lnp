@@ -1,0 +1,26 @@
+--cpu Cortex-M4.fp
+"stm_node\startup_stm32f411xe.o"
+"stm_node\main.o"
+"stm_node\stm32f4xx_it.o"
+"stm_node\stm32f4xx_hal_msp.o"
+"stm_node\dwt_stm32_delay.o"
+"stm_node\stm32f4xx_hal_tim.o"
+"stm_node\stm32f4xx_hal_tim_ex.o"
+"stm_node\stm32f4xx_hal_uart.o"
+"stm_node\stm32f4xx_hal_rcc.o"
+"stm_node\stm32f4xx_hal_rcc_ex.o"
+"stm_node\stm32f4xx_hal_flash.o"
+"stm_node\stm32f4xx_hal_flash_ex.o"
+"stm_node\stm32f4xx_hal_flash_ramfunc.o"
+"stm_node\stm32f4xx_hal_gpio.o"
+"stm_node\stm32f4xx_hal_dma_ex.o"
+"stm_node\stm32f4xx_hal_dma.o"
+"stm_node\stm32f4xx_hal_pwr.o"
+"stm_node\stm32f4xx_hal_pwr_ex.o"
+"stm_node\stm32f4xx_hal_cortex.o"
+"stm_node\stm32f4xx_hal.o"
+"stm_node\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "stm_node\stm_node.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "stm_node.map" -o stm_node\stm_node.axf

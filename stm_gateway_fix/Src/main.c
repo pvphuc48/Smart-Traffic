@@ -33,16 +33,16 @@ int main(void)
   while (1)
   {
 		HAL_UART_Receive(&huart2,&syn,1,10);
-		if(syn==100)
+		if(syn==100) // Check syn
 		{
-			HAL_UART_Receive(&huart2,&Temp_byte1,1,10);
+			HAL_UART_Receive(&huart2,&Temp_byte1,1,10); 
 			HAL_UART_Receive(&huart2,&Rh_byte1,1,10);
 			HAL_UART_Receive(&huart2,&Speed_byte1,1,10);
 		  HAL_UART_Receive(&huart2,&Speed_byte2,1,10);
 			syn=0;
 		}
-		
-		Speed = Speed_byte1*256 + Speed_byte2;
+		// Transmit data 
+		Speed = Speed_byte1*256 + Speed_byte2; 
 		Temp_chuc = Temp_byte1/10 + 48;
 		Temp_dv = Temp_byte1%10 + 48;
 		Rh_chuc = Rh_byte1/10 + 48;
@@ -69,7 +69,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		HAL_UART_Transmit(&huart6,&Speed_tram,1,10);
 		HAL_UART_Transmit(&huart6,&Speed_chuc,1,10);
 		HAL_UART_Transmit(&huart6,&Speed_dv,1,10);
-		HAL_UART_Transmit(&huart6,(uint8_t *) " cm/s",5,10);
+		HAL_UART_Transmit(&huart6,(uint8_t *) " cm/s",5,10); // 5 spaces = 5 bytes
 		HAL_UART_Transmit(&huart6,(uint8_t *) "|",1,10);
 	}
 }
@@ -127,7 +127,7 @@ void SystemClock_Config(void)
 }
 
 /* TIM2 init function */
-static void MX_TIM2_Init(void)
+static void MX_TIM2_Init(void) //Init TIM2
 {
 
   TIM_ClockConfigTypeDef sClockSourceConfig;
@@ -159,7 +159,7 @@ static void MX_TIM2_Init(void)
 }
 
 /* USART2 init function */
-static void MX_USART2_UART_Init(void)
+static void MX_USART2_UART_Init(void) //Init UART2
 {
 
   huart2.Instance = USART2;
@@ -178,7 +178,7 @@ static void MX_USART2_UART_Init(void)
 }
 
 /* USART6 init function */
-static void MX_USART6_UART_Init(void)
+static void MX_USART6_UART_Init(void) //Init UART6
 {
 
   huart6.Instance = USART6;
